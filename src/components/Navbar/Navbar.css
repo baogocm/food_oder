@@ -1,0 +1,157 @@
+.navbar{
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-logo{
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.navbar-menu{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: var(--text-color);
+    font-size: 18px;
+}
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.navbar button{
+    background: var(--primary-color);
+    font-size: 16px;
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.navbar button:hover{
+    background-color: var(--accent-color);
+}
+.navbar .active{
+    padding-bottom: 2px;
+    border-bottom:  2px solid var(--primary-color);
+}
+.navbar li{
+    cursor: pointer;
+}
+.navbar-search-icon{
+    position: relative;
+}
+.navbar-search-icon .dot{
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
+
+/* Hamburger Icon Styling (Initially Hidden) */
+.navbar-hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px; /* Height based on line height + gaps */
+    cursor: pointer;
+    color: var(--text-color);
+    margin-right: 10px;
+}
+
+.navbar-hamburger .line {
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-color);
+    border-radius: 2px;
+}
+
+@media (max-width: 1050px) {
+    .navbar-menu{
+        gap: 20px;
+        font-size: 17px;
+    }
+    .navbar-right{
+        gap: 30px;
+    }
+    .navbar-right img{
+        width: 22px;
+    }
+    .navbar-right button{
+        padding: 8px 25px;
+    }
+}
+@media (max-width: 900px) {
+    .navbar-menu{
+        gap: 15px;
+        font-size: 16px;
+    }
+    .navbar-right{
+        gap: 20px;
+    }
+    .navbar-right img{
+        width: 20px;
+    }
+    .navbar-right button{
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 780px) {
+
+    /* Show Hamburger Icon */
+    .navbar-hamburger {
+        display: flex;
+    }
+
+    /* Hide original menu links */
+    /* .navbar-menu{
+        display: none; 
+    } */
+
+    /* Mobile Menu Styling */
+    .navbar-menu {
+        display: flex; /* Keep display flex */
+        flex-direction: column; /* Stack items vertically */
+        gap: 25px; /* Adjust gap */
+        background-color: var(--secondary-color); /* Light background */
+        padding: 20px 30px; /* Add padding */
+        border: 1px solid var(--border-color); /* Add border */
+        border-radius: 5px; /* Add rounding */
+        position: absolute;
+        top: 70px; /* Position below navbar */
+        right: 5%; /* Adjust position as needed */
+        width: 200px; /* Set a width */
+        z-index: 2; /* Ensure it's above other content */
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition */
+        transform: translateY(-10px); /* Start slightly above */
+        opacity: 0; /* Start hidden */
+        pointer-events: none; /* Prevent interaction when hidden */
+    }
+
+    .navbar-menu.open {
+        transform: translateY(0); /* Slide down */
+        opacity: 1; /* Fade in */
+        pointer-events: auto; /* Allow interaction when open */
+    }
+
+    .navbar .active {
+        /* Adjust active style for mobile if needed */
+        border-bottom: 2px solid var(--primary-color); 
+        padding-bottom: 0; /* Remove padding-bottom */
+        width: fit-content; /* Make border only as wide as text */
+    }
+
+    .navbar-right {
+        gap: 25px; /* Slightly adjust gap in right section if needed */
+    }
+
+}

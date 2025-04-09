@@ -1,0 +1,64 @@
+.about-page {
+  max-width: 900px; /* Slightly wider */
+  margin: 40px auto; /* Increased top/bottom margin */
+  padding: 40px;    /* Added padding on all sides */
+  background-color: var(--background-color); /* Ensure white background */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Add subtle shadow */
+  animation: fadeIn 1s;
+}
+
+.about-page h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 40px; /* Increased margin */
+  font-size: 2.5rem; /* Larger font size */
+  font-weight: 600;
+}
+
+.about-page h2 {
+  color: var(--text-color);
+  margin-top: 35px; /* Adjusted margin */
+  margin-bottom: 20px; /* Increased margin */
+  padding-bottom: 10px; /* Increased padding */
+  border-bottom: 3px solid var(--primary-color); /* Thicker, red border */
+  font-size: 1.8rem; /* Larger font size */
+  font-weight: 500;
+}
+
+.about-page p {
+  color: #555; /* Slightly darker gray */
+  line-height: 1.7; /* Increased line height */
+  margin-bottom: 20px; /* Increased margin */
+  font-size: 1.1rem; /* Slightly larger font size */
+}
+
+/* Styling for the Core Values list */
+.about-page ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0; /* Remove default padding */
+  margin-top: 10px;
+}
+
+.about-page ul li {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  padding-left: 25px; /* Indent list items */
+  position: relative; /* For positioning the pseudo-element */
+  font-size: 1.1rem;
+}
+
+/* Custom bullet point using pseudo-element */
+.about-page ul li::before {
+  content: '\2713'; /* Checkmark symbol */
+  color: var(--primary-color); /* Red checkmark */
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 2px; /* Adjust vertical position */
+}
+
+.about-page ul li strong {
+  color: var(--text-color); /* Darker color for the value title */
+} 

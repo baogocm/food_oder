@@ -1,0 +1,105 @@
+.product-detail-page {
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 1000px;
+  animation: fadeIn 1s;
+}
+
+.product-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* Adjust column ratio as needed */
+  gap: 40px;
+  align-items: start;
+}
+
+.product-detail-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail-info h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.product-detail-rating {
+  width: 100px; /* Adjust size */
+  margin-bottom: 20px;
+}
+
+.product-detail-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+}
+
+.product-detail-description {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.product-detail-actions {
+  margin-bottom: 25px;
+}
+
+/* Style the Add to Cart button */
+.add-to-cart-btn {
+  padding: 12px 25px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: var(--accent-color);
+}
+
+/* Reuse counter style from FoodItem, possibly adjust size/spacing */
+.product-detail-counter {
+  /* Inherits styles from .food-item-counter */
+  /* You might want to make icons slightly larger here if needed */
+}
+
+.product-detail-category {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.product-detail-category span {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.product-not-found {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .product-detail-content {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    gap: 30px;
+  }
+
+  .product-detail-info h1 {
+    font-size: 2.2rem;
+  }
+
+  .product-detail-price {
+    font-size: 1.8rem;
+  }
+} 
