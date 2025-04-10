@@ -6,7 +6,7 @@ import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { productId } = useParams();
-  const { food_list, cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+  const { food_list, cartItems, addToCart, removeFromCart,url} = useContext(StoreContext);
 
   // Find the product by ID
   const product = food_list.find((item) => item._id === productId);
@@ -20,7 +20,7 @@ const ProductDetail = () => {
     <div className='product-detail-page'>
       <div className="product-detail-content">
         <div className="product-detail-image">
-          <img src={product.image} alt={product.name} />
+          <img src={url+"/images/"+product.image} alt={product.name} />
         </div>
         <div className="product-detail-info">
           <h1>{product.name}</h1>

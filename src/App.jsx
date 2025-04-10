@@ -9,6 +9,8 @@ import LoginPopup from './components/LoginPopup/LoginPopup'
 import About from './pages/About/About'
 import Policy from './pages/Policy/Policy'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
@@ -16,7 +18,19 @@ const App = () => {
 
   return (
     <>
-    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
+      <ToastContainer 
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
       <div className='app'>
       <Navbar setShowLogin = {setShowLogin}/>
       <Routes>

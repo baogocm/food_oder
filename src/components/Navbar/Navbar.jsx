@@ -3,13 +3,20 @@ import './Navbar.css'
 import { assets } from '../../assets/assets';
 import { Link, Links } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({setShowLogin}) => {
     const[menu,setMenu] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
 
-    const {getTotalCartAmount} = useContext(StoreContext);
+    const {getTotalCartAmount,token,setToken} = useContext(StoreContext);
 
+    const navigate = useNavigate();
+    const logout = () => {
+        localStorage.removeItem("token");
+        setToken(null);
+        navigate("/");
+    }
     // Function to toggle menu
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -41,7 +48,17 @@ const Navbar = ({setShowLogin}) => {
             <Link to='/cart'><img src={assets.basket_icon} alt="Giỏ hàng" /></Link>
             <div className={getTotalCartAmount()===0 ? "": "dot"}></div>
         </div>
+        {!token?
         <button onClick={()=>setShowLogin(true)}>Đăng nhập</button>
+        :<div className="navbar-profile">
+            <img src={assets.profile_icon} alt="Tài khoản" />
+            <ul className='navbar-profile-dropdown'>
+              <li><img src={assets.bag_icon} alt="" />Đơn hàng</li>
+              <hr />
+              <li onClick={logout}><img src={assets.logout_icon} alt="" />Đăng xuất</li>
+            </ul>
+          </div>
+        }
       </div>
     </div>
   )

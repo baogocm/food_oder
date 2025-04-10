@@ -155,3 +155,40 @@
     }
 
 }
+.navbar-profile{
+    position: relative;
+
+}
+.navbar-profile:hover .navbar-profile-dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    outline: 2px solid var(--primary-color);
+    list-style: none;
+}
+.navbar-profile-dropdown{
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+}
+.navbar-profile-dropdown li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.navbar-profile-dropdown img{
+    width: 20px;
+}
+.navbar-profile-dropdown hr{
+    border: 1px solid var(--border-color);
+    margin: 5px 0;
+}
+.navbar-profile-dropdown li:hover{
+    color: var(--primary-color);
+}
