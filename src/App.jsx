@@ -9,6 +9,8 @@ import LoginPopup from './components/LoginPopup/LoginPopup'
 import About from './pages/About/About'
 import Policy from './pages/Policy/Policy'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
+import Verify from './pages/Verify/Verify'
+import MyOrders from './pages/Myorder/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -40,6 +42,8 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/my-orders" element={<MyOrders />} />
       </Routes>
     </div>
     <Footer/>

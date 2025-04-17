@@ -34,6 +34,13 @@ const StoreContextProvider = (props) => {
         const removeFromCart = async(itemId) =>
         {
             setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
+            if(cartItems[itemId] <= 1) {
+                // Remove item completely if count reaches 0
+                const updatedCart = {...cartItems};
+                delete updatedCart[itemId];
+                setCartItems(updatedCart);
+            }
+            
             if(token)
             {
                 await axios.post(`${url}/api/cart/remove`,{itemId},{headers:{token}})
@@ -42,8 +49,26 @@ const StoreContextProvider = (props) => {
         const loadCartData = async() =>{
             if(token)
             {
-                const response = await axios.post(`${url}/api/cart/get`,{},{headers:{token}})
-                setCartItems(response.data.cartData);
+                try {
+                    const response = await axios.post(`${url}/api/cart/get`,{},{headers:{token}})
+                    setCartItems(response.data.cartData);
+                } catch (error) {
+                    console.error("Error loading cart data:", error);
+                }
+            }
+        }
+
+        // Xóa toàn bộ giỏ hàng
+        const clearCart = async() => {
+            setCartItems({});
+            localStorage.removeItem('cartItems');
+            
+            if(token) {
+                try {
+                    await axios.post(`${url}/api/cart/clear`, {}, {headers:{token}});
+                } catch (error) {
+                    console.error("Lỗi khi xóa giỏ hàng:", error);
+                }
             }
         }
 
@@ -59,23 +84,38 @@ const StoreContextProvider = (props) => {
             }
             return totalAmount;
         }
+        
         const fetchFoodList = async() => {
-            const response = await axios.get(`${url}/api/food/list`);
-            setFoodList(response.data.data);
+            try {
+                const response = await axios.get(`${url}/api/food/list`);
+                setFoodList(response.data.data);
+            } catch (error) {
+                console.error("Error fetching food list:", error);
+            }
         }
+        
+        // Initial data loading
         useEffect(()=>{
             async function fetchData(){
                 await fetchFoodList();
-                // First check localStorage for cart items
+                
+                // First load the cart from localStorage - this will work even without login
                 const savedCart = localStorage.getItem('cartItems');
                 if(savedCart) {
-                    setCartItems(JSON.parse(savedCart));
+                    try {
+                        const parsedCart = JSON.parse(savedCart);
+                        setCartItems(parsedCart);
+                        console.log("Loaded cart from localStorage:", parsedCart);
+                    } catch (error) {
+                        console.error("Error parsing saved cart:", error);
+                        localStorage.removeItem('cartItems');
+                    }
                 }
                 
-                // Then check if user is logged in
+                // Then check if user is logged in - server cart takes precedence if available
                 if(localStorage.getItem("token")){
                     setToken(localStorage.getItem("token"));
-                    await loadCartData(localStorage.getItem("token"));
+                    await loadCartData();
                 }
             }
             fetchData();
@@ -88,6 +128,7 @@ const StoreContextProvider = (props) => {
             setCartItems,
             addToCart,
             removeFromCart,
+            clearCart,
             getTotalCartAmount,
             url,
             token,

@@ -7,6 +7,9 @@ import { Link, useNavigate } from 'react-router-dom'
 const FoodItem = ({id,name,price,description,image}) => {
   const {cartItems,addToCart,removeFromCart,url} = useContext(StoreContext)
   const navigate = useNavigate();
+  
+  // Check if this item is in the cart
+  const itemCount = cartItems[id] || 0;
 
   return (
     <div className='food-item'>
@@ -14,11 +17,11 @@ const FoodItem = ({id,name,price,description,image}) => {
         <Link to={`/product/${id}`}>
           <img className='food-item-image' src={url+"/images/"+image} alt={name} />
         </Link>
-        {!cartItems[id]
-          ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt="Thêm vào giỏ" />
+        {!itemCount
+          ? <img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt="Thêm vào giỏ" />
           : <div className='food-item-counter'>
             <img onClick={()=>removeFromCart(id)} src={assets.remove_icon_red} alt="Bớt" />
-            <p>{cartItems[id]}</p>
+            <p>{itemCount}</p>
             <img onClick={()=>addToCart(id)} src={assets.add_icon_green} alt="Thêm" />
           </div>
         }

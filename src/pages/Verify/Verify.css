@@ -1,0 +1,104 @@
+.verify-container {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: white;
+}
+
+.loading {
+  font-size: 1.2rem;
+  color: #666;
+  padding: 40px 0;
+}
+
+.verify-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.verify-status {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.failed {
+  background-color: #f44336;
+  color: white;
+}
+
+.verify-result h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #333;
+}
+
+.verify-result p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 10px 0 30px;
+}
+
+.verify-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.verify-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.verify-buttons button:first-child {
+  background-color: #2196F3;
+  color: white;
+}
+
+.verify-buttons button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.verify-buttons button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .verify-container {
+    margin: 50px 20px;
+    padding: 20px;
+  }
+  
+  .verify-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .verify-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+} 
